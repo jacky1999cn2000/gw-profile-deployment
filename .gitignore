@@ -1,0 +1,7 @@
+source/
+retrieve-logs/
+validate-logs/
+deploy-logs/
+node_modules/
+deploy/*.jar
+deploy/build.properties

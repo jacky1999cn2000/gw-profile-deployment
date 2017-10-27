@@ -1,0 +1,122 @@
+<project name="cpq deployment" default="retrieveDev" basedir="." xmlns:sf="antlib:com.salesforce">
+
+  <property file="build.properties"/>
+  <property name="source" value="source"/>
+  <tstamp><format property="TSTAMP" pattern="hhmmss"/></tstamp>
+  <property name="retrieveLogName" value="retrieve-logs/${DSTAMP}-${TSTAMP}"/>
+  <property name="validateLogName" value="validate-logs/${DSTAMP}-${TSTAMP}"/>
+  <property name="deployLogName" value="deploy-logs/${DSTAMP}-${TSTAMP}"/>
+  <condition property="dev.username" value="">
+    <not>
+      <isset property="dev.username"/>
+    </not>
+  </condition>
+  <condition property="dev.password" value="">
+    <not>
+      <isset property="dev.password"/>
+    </not>
+  </condition>
+  <condition property="uat.username" value="">
+    <not>
+      <isset property="uat.username"/>
+    </not>
+  </condition>
+  <condition property="uat.password" value="">
+    <not>
+      <isset property="uat.password"/>
+    </not>
+  </condition>
+  <condition property="prod.username" value="">
+    <not>
+      <isset property="prod.username"/>
+    </not>
+  </condition>
+  <condition property="prod.password" value="">
+    <not>
+      <isset property="prod.password"/>
+    </not>
+  </condition>
+
+  <taskdef resource="com/salesforce/antlib.xml" uri="antlib:com.salesforce">
+    <classpath>
+      <pathelement location="./ant-salesforce.jar"/>
+    </classpath>
+  </taskdef>
+
+  <target name="retrieveDEV">
+    <delete dir="retrieve-logs"/>
+    <mkdir dir="retrieve-logs"/>
+    <record name="${retrieveLogName}" action="start"/>
+    <echo>Retrieve Begins...</echo>
+    <echo message="dev.username ${dev.username}"/>
+    <echo message="dev.password ${dev.password}"/>
+    <delete dir="${source}"/>
+    <mkdir dir="${source}"/>
+    <sf:retrieve username="${dev.username}" password="${dev.password}" serverurl="${sf.sandboxurl}" retrieveTarget="${source}" unpackaged="retrieve/package.xml" maxPoll="${sf.maxPoll}" pollWaitMillis="${sf.pollWaitMillis}"/>
+    <echo>Retrieve Ends...</echo>
+    <record name="${retrieveLogName}" action="stop"/>
+  </target>
+
+  <target name="validateDEV">
+    <delete dir="validate-logs"/>
+    <mkdir dir="validate-logs"/>
+    <record name="${validateLogName}" action="start"/>
+    <echo>Validate Begins...</echo>
+    <echo message="dev.username ${dev.username}"/>
+    <echo message="dev.password ${dev.password}"/>
+    <sf:deploy username="${dev.username}" password="${dev.password}" serverurl="${sf.sandboxurl}" maxPoll="${sf.maxPoll}" pollWaitMillis="${sf.pollWaitMillis}" testLevel="NoTestRun" checkOnly="true" deployRoot="${source}" rollbackOnError="true"></sf:deploy>
+    <echo>Validate Ends...</echo>
+    <record name="${validateLogName}" action="stop"/>
+  </target>
+
+  <target name="deployDEV">
+    <delete dir="deploy-logs"/>
+    <mkdir dir="deploy-logs"/>
+    <record name="${deployLogName}" action="start"/>
+    <echo>Deploy Begins...</echo>
+    <echo message="dev.username ${dev.username}"/>
+    <echo message="dev.password ${dev.password}"/>
+    <sf:deploy username="${dev.username}" password="${dev.password}" serverurl="${sf.sandboxurl}" maxPoll="${sf.maxPoll}" pollWaitMillis="${sf.pollWaitMillis}" testLevel="NoTestRun" checkOnly="false" deployRoot="${source}" rollbackOnError="true"></sf:deploy>
+    <echo>Deploy Ends...</echo>
+    <record name="${deployLogName}" action="stop"/>
+  </target>
+
+  <target name="retrievePROD">
+    <delete dir="retrieve-logs"/>
+    <mkdir dir="retrieve-logs"/>
+    <record name="${retrieveLogName}" action="start"/>
+    <echo>Retrieve Begins...</echo>
+    <echo message="prod.username ${prod.username}"/>
+    <echo message="prod.password ${prod.password}"/>
+    <delete dir="${source}"/>
+    <mkdir dir="${source}"/>
+    <sf:retrieve username="${prod.username}" password="${prod.password}" serverurl="${sf.productionurl}" retrieveTarget="${source}" unpackaged="retrieve/package.xml" maxPoll="${sf.maxPoll}" pollWaitMillis="${sf.pollWaitMillis}"/>
+    <echo>Retrieve Ends...</echo>
+    <record name="${retrieveLogName}" action="stop"/>
+  </target>
+
+  <target name="validatePROD">
+    <delete dir="validate-logs"/>
+    <mkdir dir="validate-logs"/>
+    <record name="${validateLogName}" action="start"/>
+    <echo>Validate Begins...</echo>
+    <echo message="prod.username ${prod.username}"/>
+    <echo message="prod.password ${prod.password}"/>
+    <sf:deploy username="${prod.username}" password="${prod.password}" serverurl="${sf.productionurl}" maxPoll="${sf.maxPoll}" pollWaitMillis="${sf.pollWaitMillis}" testLevel="NoTestRun" checkOnly="true" deployRoot="${source}" rollbackOnError="true"></sf:deploy>
+    <echo>Validate Ends...</echo>
+    <record name="${validateLogName}" action="stop"/>
+  </target>
+
+  <target name="deployPROD">
+    <delete dir="deploy-logs"/>
+    <mkdir dir="deploy-logs"/>
+    <record name="${deployLogName}" action="start"/>
+    <echo>Deploy Begins...</echo>
+    <echo message="prod.username ${prod.username}"/>
+    <echo message="prod.password ${prod.password}"/>
+    <sf:deploy username="${prod.username}" password="${prod.password}" serverurl="${sf.productionurl}" maxPoll="${sf.maxPoll}" pollWaitMillis="${sf.pollWaitMillis}" testLevel="NoTestRun" checkOnly="false" deployRoot="${source}" rollbackOnError="true"></sf:deploy>
+    <echo>Deploy Ends...</echo>
+    <record name="${deployLogName}" action="stop"/>
+  </target>
+
+</project>
