@@ -102,7 +102,18 @@
     <echo>Validate Begins...</echo>
     <echo message="prod.username ${prod.username}"/>
     <echo message="prod.password ${prod.password}"/>
-    <sf:deploy username="${prod.username}" password="${prod.password}" serverurl="${sf.productionurl}" maxPoll="${sf.maxPoll}" pollWaitMillis="${sf.pollWaitMillis}" testLevel="NoTestRun" checkOnly="true" deployRoot="${source}" rollbackOnError="true"></sf:deploy>
+    <sf:deploy
+      username="${prod.username}"
+      password="${prod.password}"
+      serverurl="${sf.productionurl}"
+      maxPoll="${sf.maxPoll}"
+      pollWaitMillis="${sf.pollWaitMillis}"
+      testLevel="RunSpecifiedTests"
+      checkOnly="true"
+      deployRoot="${source}"
+      rollbackOnError="true">
+      <runTest>CS_TriggerFactoryTest</runTest>
+    </sf:deploy>
     <echo>Validate Ends...</echo>
     <record name="${validateLogName}" action="stop"/>
   </target>
@@ -114,7 +125,18 @@
     <echo>Deploy Begins...</echo>
     <echo message="prod.username ${prod.username}"/>
     <echo message="prod.password ${prod.password}"/>
-    <sf:deploy username="${prod.username}" password="${prod.password}" serverurl="${sf.productionurl}" maxPoll="${sf.maxPoll}" pollWaitMillis="${sf.pollWaitMillis}" testLevel="NoTestRun" checkOnly="false" deployRoot="${source}" rollbackOnError="true"></sf:deploy>
+    <sf:deploy
+      username="${prod.username}"
+      password="${prod.password}"
+      serverurl="${sf.productionurl}"
+      maxPoll="${sf.maxPoll}"
+      pollWaitMillis="${sf.pollWaitMillis}"
+      testLevel="RunSpecifiedTests"
+      checkOnly="false"
+      deployRoot="${source}"
+      rollbackOnError="true">
+      <runTest>CS_TriggerFactoryTest</runTest>
+    </sf:deploy>
     <echo>Deploy Ends...</echo>
     <record name="${deployLogName}" action="stop"/>
   </target>

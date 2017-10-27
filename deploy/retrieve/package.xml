@@ -2,21 +2,21 @@
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
   <types>
     <members>Order</members>
-    <!-- <members>OrderItem</members> -->
-    <!-- <members>CPQ_Billing_Schedule__c</members> -->
-    <!-- <members>SBQQ__Quote__c</members> -->
-    <!-- <members>SBQQ__QuoteLine__c</members> -->
-    <!-- <members>sbaa__ApprovalCondition__c</members> -->
-    <!-- <members>sbaa__ApprovalRule__c</members> -->
-    <!-- <members>CPQ_Price_Model_7_Data_Table__c</members> -->
-    <!-- <members>CPQ_In_Scope_DWP__c</members> -->
-    <!-- <members>CPQ_Pricing_Model_2_Quantity_Band__c</members> -->
+    <members>OrderItem</members>
+    <members>CPQ_Billing_Schedule__c</members>
+    <members>SBQQ__Quote__c</members>
+    <members>SBQQ__QuoteLine__c</members>
+    <members>sbaa__ApprovalCondition__c</members>
+    <members>sbaa__ApprovalRule__c</members>
+    <members>CPQ_Price_Model_7_Data_Table__c</members>
+    <members>CPQ_In_Scope_DWP__c</members>
+    <members>CPQ_Pricing_Model_2_Quantity_Band__c</members>
     <name>CustomObject</name>
   </types>
   <types>
     <members>Admin</members>
     <members>GW Sales</members>
-    <members>GW Inside/Sales Ops</members>
+    <members>GW Inside-Sales Ops</members>
     <name>Profile</name>
   </types>
   <version>38.0</version>

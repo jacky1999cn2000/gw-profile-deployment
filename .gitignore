@@ -1,4 +1,4 @@
-source/
+deploy/source
 retrieve-logs/
 validate-logs/
 deploy-logs/
