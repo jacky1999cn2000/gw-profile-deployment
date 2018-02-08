@@ -81,6 +81,44 @@
     <record name="${deployLogName}" action="stop"/>
   </target>
 
+  <target name="retrieveUAT">
+    <delete dir="retrieve-logs"/>
+    <mkdir dir="retrieve-logs"/>
+    <record name="${retrieveLogName}" action="start"/>
+    <echo>Retrieve Begins...</echo>
+    <echo message="uat.username ${uat.username}"/>
+    <echo message="uat.password ${uat.password}"/>
+    <delete dir="${source}"/>
+    <mkdir dir="${source}"/>
+    <sf:retrieve username="${uat.username}" password="${uat.password}" serverurl="${sf.sandboxurl}" retrieveTarget="${source}" unpackaged="retrieve/package.xml" maxPoll="${sf.maxPoll}" pollWaitMillis="${sf.pollWaitMillis}"/>
+    <echo>Retrieve Ends...</echo>
+    <record name="${retrieveLogName}" action="stop"/>
+  </target>
+
+  <target name="validateUAT">
+    <delete dir="validate-logs"/>
+    <mkdir dir="validate-logs"/>
+    <record name="${validateLogName}" action="start"/>
+    <echo>Validate Begins...</echo>
+    <echo message="uat.username ${uat.username}"/>
+    <echo message="uat.password ${uat.password}"/>
+    <sf:deploy username="${uat.username}" password="${uat.password}" serverurl="${sf.sandboxurl}" maxPoll="${sf.maxPoll}" pollWaitMillis="${sf.pollWaitMillis}" testLevel="NoTestRun" checkOnly="true" deployRoot="${source}" rollbackOnError="true"></sf:deploy>
+    <echo>Validate Ends...</echo>
+    <record name="${validateLogName}" action="stop"/>
+  </target>
+
+  <target name="deployUAT">
+    <delete dir="deploy-logs"/>
+    <mkdir dir="deploy-logs"/>
+    <record name="${deployLogName}" action="start"/>
+    <echo>Deploy Begins...</echo>
+    <echo message="uat.username ${uat.username}"/>
+    <echo message="uat.password ${uat.password}"/>
+    <sf:deploy username="${uat.username}" password="${uat.password}" serverurl="${sf.sandboxurl}" maxPoll="${sf.maxPoll}" pollWaitMillis="${sf.pollWaitMillis}" testLevel="NoTestRun" checkOnly="false" deployRoot="${source}" rollbackOnError="true"></sf:deploy>
+    <echo>Deploy Ends...</echo>
+    <record name="${deployLogName}" action="stop"/>
+  </target>
+
   <target name="retrievePROD">
     <delete dir="retrieve-logs"/>
     <mkdir dir="retrieve-logs"/>
