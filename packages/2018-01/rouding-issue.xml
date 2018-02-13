@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
   <types>
+    <members>SBQQ__QuoteLine__c.CPQ_Annual_Net_QLE_Amount__c</members>
     <members>SBQQ__Quote__c.CPQ_Annual_License_Rollup__c</members>
     <members>SBQQ__Quote__c.CPQ_Annual_Support_Rollup__c</members>
     <members>SBQQ__Quote__c.CPQ_Year_1_Amount_Total__c</members>
