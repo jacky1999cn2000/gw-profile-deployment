@@ -1,31 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
   <types>
-    <members>SBQQ__QuoteLine__c.CPQ_Annual_Net_QLE_Amount__c</members>
-    <members>SBQQ__Quote__c.CPQ_Annual_License_Rollup__c</members>
-    <members>SBQQ__Quote__c.CPQ_Annual_Support_Rollup__c</members>
-    <members>SBQQ__Quote__c.CPQ_Year_1_Amount_Total__c</members>
-    <members>SBQQ__Quote__c.CPQ_Year_2_Amount_Total__c</members>
-    <members>SBQQ__Quote__c.CPQ_Year_3_Amount_Total__c</members>
-    <members>SBQQ__Quote__c.CPQ_Year_4_Amount_Total__c</members>
-    <members>SBQQ__Quote__c.CPQ_Year_5_Amount_Total__c</members>
-    <members>SBQQ__Quote__c.CPQ_Year_1_Support_Total__c</members>
-    <members>SBQQ__Quote__c.CPQ_Year_2_Support_Total__c</members>
-    <members>SBQQ__Quote__c.CPQ_Year_3_Support_Total__c</members>
-    <members>SBQQ__Quote__c.CPQ_Year_4_Support_Total__c</members>
-    <members>SBQQ__Quote__c.CPQ_Year_5_Support_Total__c</members>
-    <members>SBQQ__Quote__c.CPQ_Prorated_License_ARR_Rollup__c</members>
-    <members>SBQQ__Quote__c.CPQ_Prorated_Support_ARR_Rollup__c</members>
-    <members>SBQQ__Quote__c.Year_1_License_ARR_Amount_Rollup__c</members>
-    <members>SBQQ__Quote__c.Year_2_License_ARR_Amount_Rollup__c</members>
-    <members>SBQQ__Quote__c.Year_3_License_ARR_Amount_Rollup__c</members>
-    <members>SBQQ__Quote__c.Year_4_License_ARR_Amount_Rollup__c</members>
-    <members>SBQQ__Quote__c.Year_5_License_ARR_Amount_Rollup__c</members>
-    <members>SBQQ__Quote__c.Year_1_Support_ARR_Amount_Rollup__c</members>
-    <members>SBQQ__Quote__c.Year_2_Support_ARR_Amount_Rollup__c</members>
-    <members>SBQQ__Quote__c.Year_3_Support_ARR_Amount_Rollup__c</members>
-    <members>SBQQ__Quote__c.Year_4_Support_ARR_Amount_Rollup__c</members>
-    <members>SBQQ__Quote__c.Year_5_Support_ARR_Amount_Rollup__c</members>
+
+    <members>Opportunity.InsuranceNow_NARR__c</members>
+    <members>Opportunity.BillingCenter_NARR__c</members>
+    <members>Opportunity.ClaimCenter_NARR__c</members>
+    <members>Opportunity.PolicyCenter_NARR__c</members>
+    <members>Opportunity.Hosted_InsuranceSuite_NARR__c</members>
+    <members>Opportunity.InsuranceSuite_NARR__c</members>
+
+    <members>Opportunity.UM_NARR__c</members>
+
+    <members>Opportunity.Cyence_NARR__c</members>
+
+    <members>Opportunity.Data_Management_NARR__c</members>
+
+    <members>Opportunity.Guidewire_Live_NARR__c</members>
+    <members>Opportunity.Live_Analytics_NARR__c</members>
+
+    <members>Opportunity.Millbrook_NARR__c</members>
+    <members>Opportunity.PA_NARR__c</members>
+
+    <members>Opportunity.CPQ_Digital_NARR__c</members>
+
+
+    <members>Opportunity.Core_IN_NARR_F__c</members>
+    <members>Opportunity.Data_NARR_Core_F__c</members>
+    <members>Opportunity.UM_NARR_F__c</members>
+    <members>Opportunity.Digital_NARR_F__c</members>
+    <members>Opportunity.PA_NARR_F__c</members>
+    <members>Opportunity.Data_NARR_Other_F__c</members>
+    <members>Opportunity.Cyence_NARR_F__c</members>
+
     <name>CustomField</name>
   </types>
   <types>
@@ -35,5 +41,5 @@
     <members>Integration User</members>
     <name>Profile</name>
   </types>
-  <version>38.0</version>
+  <version>42.0</version>
 </Package>
